@@ -1,17 +1,35 @@
-import "./Home.scss";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import "./Home.scss";
+
 export default function Home() {
   return (
     <div className="hero">
       <div className="hero__container">
         <div className="hero__content-container">
           <h1 className="hero__content">
-            <span className="hero__text-left">
-              <span className="hero__span-0">Elevate your property </span>
-            </span>
-            <span className="hero__text-right">
-              <span className="hero__span-1">with thoughtful design</span>
-            </span>
+            <motion.span
+              className="hero__text-left"
+              initial={{ y: 50, opacity: 0 }}
+              animate={{
+                y: 0,
+                opacity: 1,
+                transition: { duration: 0.6, ease: "easeInOut" },
+              }}
+            >
+              Elevate your property
+            </motion.span>
+            <motion.span
+              className="hero__text-right"
+              initial={{ y: 50, opacity: 0 }}
+              animate={{
+                y: 0,
+                opacity: 1,
+                transition: { duration: 0.6, delay: 0.2, ease: "easeInOut" },
+              }}
+            >
+              with thoughtful design
+            </motion.span>
           </h1>
           <Link className="hero__cta">
             Shop Now
