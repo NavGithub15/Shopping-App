@@ -1,9 +1,11 @@
 import "./Header.scss";
+import { Link } from "react-router-dom";
 
 export default function Header() {
   
   return (
     <nav className="header">
+      <Link to="/">
       <svg
         width="112"
         height="30"
@@ -15,6 +17,7 @@ export default function Header() {
           fill="#000"
         ></path>
       </svg>
+        </Link>
       <div>
       </div>
     </nav>
