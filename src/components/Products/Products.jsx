@@ -1,9 +1,16 @@
 import "./Products.scss";
+import { useProducts } from "../../utils/utils";
 import { Container, Box, Flex, Icon } from "@chakra-ui/react";
 import { StarIcon } from "@chakra-ui/icons";
 import { MdOutlineAddShoppingCart } from "react-icons/md";
 
 export default function Products() {
+  const { isLoading, error, data } = useProducts();
+
+  if (isLoading) return <div>Loading...</div>;
+
+  if (error) return <div>{error.message}</div>;
+
   return (
     <>
       <Container padding="0" margin="0" width="100%" maxW="100%">
@@ -19,21 +26,28 @@ export default function Products() {
             },
           }}
         >
-          <Box maxW="sm" borderWidth="1px" borderRadius="lg" overflow="hidden" padding="0">
-            {/* <Image src={property.imageUrl} alt={property.imageAlt} /> */}
+          {data
+            ? data.data.products.map((product) => (
+                <Box
+                  maxW="sm"
+                  borderWidth="1px"
+                  borderRadius="lg"
+                  overflow="hidden"
+                  padding="0"
+                  key={product.userId.id}
+                >
+                  <Image src={product.imageURLs[0]} alt="products image" />
 
-            <Box>
-              <Box
-                mt="1"
-                fontWeight="semibold"
-                as="h4"
-                lineHeight="tight"
-                noOfLines={1}
-              >
-                hwllo
-              </Box>
-              <Box display="flex" mt="2" alignItems="center">
-                {/* {Array(5)
+                  <Box>
+                    <Box
+                      mt="1"
+                      fontWeight="semibold"
+                      as="h4"
+                      lineHeight="tight"
+                      noOfLines={1}
+                    ></Box>
+                    <Box display="flex" mt="2" alignItems="center">
+                      {/* {Array(5)
             .fill('')
             .map((_, i) => (
               <StarIcon
@@ -41,16 +55,18 @@ export default function Products() {
                 color={i < property.rating ? 'yellow.500' : 'gray.300'}
               />
             ))} */}
-                <Box as="span"  color="gray.600" fontSize="sm">
-                  5 reviews
+                      <Box as="span" color="gray.600" fontSize="sm">
+                        5 reviews
+                      </Box>
+                    </Box>
+                    <Box as="span" color="gray.600" fontSize="sm">
+                      $100
+                      <Icon as={MdOutlineAddShoppingCart} />
+                    </Box>
+                  </Box>
                 </Box>
-              </Box>
-              <Box as="span" color="gray.600" fontSize="sm">
-                $100
-                <Icon as={MdOutlineAddShoppingCart} />
-              </Box>
-            </Box>
-          </Box>
+              ))
+            : null}
         </Flex>
       </Container>
     </>

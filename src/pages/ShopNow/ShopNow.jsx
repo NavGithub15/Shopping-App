@@ -1,6 +1,6 @@
 import "./ShopNow.scss"
 import Products from "../../components/Products/Products";
-import ProductDetails from "../../components/ProductsDetails/ProductDetails";
+import ProductsImage from "../../components/ProductsImage/ProductsImage";
 
 
 export default function ShopNow() {
@@ -8,7 +8,7 @@ export default function ShopNow() {
     <>
     <main className="shopNow">
       <div className="shopNow__container">
-      <ProductDetails />
+      <ProductsImage />
       <Products />
       </div>
     </main>

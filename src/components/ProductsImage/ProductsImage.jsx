@@ -1,5 +1,3 @@
-import "./ProductsDetails.scss";
-import { useState } from "react";
 import { Container, Box, Image } from "@chakra-ui/react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -14,6 +12,8 @@ import Image6 from "../../assets/images/image6.png";
 const images = [Image1, Image2, Image3, Image4, Image5, Image6];
 
 export default function ProductDetails() {
+  
+  // React carousel settings
   const settings = {
     dots: true,
     infinite: true,
