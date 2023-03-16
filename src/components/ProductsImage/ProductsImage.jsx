@@ -12,7 +12,6 @@ import Image6 from "../../assets/images/image6.png";
 const images = [Image1, Image2, Image3, Image4, Image5, Image6];
 
 export default function ProductDetails() {
-  
   // React carousel settings
   const settings = {
     dots: true,
@@ -38,7 +37,11 @@ export default function ProductDetails() {
 
   return (
     <>
-      <Container padding="0" margin="0">
+      <Container
+        padding="0"
+        margin="0"
+        marginBottom="2rem"
+      >
         <Slider
           {...settings}
           sx={{

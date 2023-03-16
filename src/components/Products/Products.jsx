@@ -1,6 +1,6 @@
 import "./Products.scss";
 import { useProducts } from "../../utils/utils";
-import { Container, Box, Flex, Icon } from "@chakra-ui/react";
+import { Container, Box, Flex, Icon, Image } from "@chakra-ui/react";
 import { StarIcon } from "@chakra-ui/icons";
 import { MdOutlineAddShoppingCart } from "react-icons/md";
 
@@ -13,10 +13,17 @@ export default function Products() {
 
   return (
     <>
-      <Container padding="0" margin="0" width="100%" maxW="100%">
+      <Container
+        padding="0"
+        margin="0"
+        width="100%"
+        maxW="100%"
+        maxH="710px"
+        overflow="auto"
+      >
         <Flex
           flexWrap="wrap"
-          p={{ base: "1rem", lg: "2rem" }}
+          p={{ base: "1rem" }}
           sx={{
             "@media screen and (min-width: 62rem)": {
               border: "1px solid lightgray",
@@ -29,39 +36,55 @@ export default function Products() {
           {data
             ? data.data.products.map((product) => (
                 <Box
-                  maxW="sm"
+                  maxW="280px"
+                  margin="1rem auto"
                   borderWidth="1px"
                   borderRadius="lg"
                   overflow="hidden"
                   padding="0"
-                  key={product.userId.id}
+                  key={product._id}
                 >
-                  <Image src={product.imageURLs[0]} alt="products image" />
-
+                  <Image
+                    src={product.imageURLs[0]}
+                    alt="products image"
+                    border="1px solid lightgray"
+                  />
                   <Box>
                     <Box
                       mt="1"
+                      marginLeft=".5rem"
+                      marginRight=".5rem"
                       fontWeight="semibold"
-                      as="h4"
+                      as="h5"
                       lineHeight="tight"
-                      noOfLines={1}
-                    ></Box>
-                    <Box display="flex" mt="2" alignItems="center">
-                      {/* {Array(5)
-            .fill('')
-            .map((_, i) => (
-              <StarIcon
-                key={i}
-                color={i < property.rating ? 'yellow.500' : 'gray.300'}
-              />
-            ))} */}
-                      <Box as="span" color="gray.600" fontSize="sm">
-                        5 reviews
-                      </Box>
+                    >
+                      {product.fulhausProductName}
                     </Box>
-                    <Box as="span" color="gray.600" fontSize="sm">
-                      $100
-                      <Icon as={MdOutlineAddShoppingCart} />
+                    <Box display="flex" alignItems="center">
+                      {new Array(5).fill("").map((_, i) => (
+                        <StarIcon
+                          key={i}
+                          color={"yellow.500"}
+                          mt="1"
+                          marginLeft="8px"
+                        />
+                      ))}
+                    </Box>
+                    <Box
+                      display="flex"
+                      justifyContent="space-between"
+                      margin="0.5rem 0.5rem 1rem 0.5rem"
+                      fontSize="1rem"
+                      as="h6"
+                      fontWeight="semibold"
+                      color="gray.600"
+                    >
+                      ${product.rentalPrice}
+                      <Icon
+                        as={MdOutlineAddShoppingCart}
+                        className="react-icons"
+                        cursor="pointer"
+                      />
                     </Box>
                   </Box>
                 </Box>
