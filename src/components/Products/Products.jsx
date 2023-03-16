@@ -1,6 +1,6 @@
 import "./Products.scss";
-import { Container, Box, Flex } from "@chakra-ui/react";
-import { Icon } from "@chakra-ui/react";
+import { Container, Box, Flex, Icon } from "@chakra-ui/react";
+import { StarIcon } from "@chakra-ui/icons";
 import { MdOutlineAddShoppingCart } from "react-icons/md";
 
 export default function Products() {
