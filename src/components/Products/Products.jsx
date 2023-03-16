@@ -10,6 +10,7 @@ export default function Products() {
   // get all the products using the useProducts hook
   const { data } = useProducts();
 
+  // If the products loading or gets an error, show a message
   if (!data) {
     return <LoadingError />;
   }
