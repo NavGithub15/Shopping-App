@@ -1,15 +1,18 @@
 import "./Products.scss";
 import { useProducts } from "../../utils/utils";
-import { Container, Box, Flex, Icon, Image } from "@chakra-ui/react";
+import { Container, Box, Flex, Icon, Image, Spinner } from "@chakra-ui/react";
 import { StarIcon } from "@chakra-ui/icons";
 import { MdOutlineAddShoppingCart } from "react-icons/md";
+import Broken from "../../assets/images/broken.png";
+import LoadingError from "../LoadingError/LoadingError";
 
 export default function Products() {
-  const { isLoading, error, data } = useProducts();
+  // get all the products using the useProducts hook
+  const { data } = useProducts();
 
-  if (isLoading) return <div>Loading...</div>;
-
-  if (error) return <div>{error.message}</div>;
+  if (!data) {
+    return <LoadingError />;
+  }
 
   return (
     <>
