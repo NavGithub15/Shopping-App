@@ -1,0 +1,15 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/colors" as *;
+
+.shopNow {
+
+    &__container{
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+    
+        @include tablet {
+            flex-direction: row;
+        }
+    }
+}

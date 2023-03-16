@@ -31,7 +31,7 @@ export default function Home() {
               with thoughtful design
             </motion.span>
           </h1>
-          <Link className="hero__cta">
+          <Link className="hero__cta" to="/shopNow">
             Shop Now
             <svg
               width="1em"
