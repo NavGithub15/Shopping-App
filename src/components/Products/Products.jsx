@@ -3,10 +3,16 @@ import { useProducts } from "../../utils/utils";
 import { Container, Box, Flex, Icon, Image, Spinner } from "@chakra-ui/react";
 import { StarIcon } from "@chakra-ui/icons";
 import { MdOutlineAddShoppingCart } from "react-icons/md";
-import Broken from "../../assets/images/broken.png";
 import LoadingError from "../LoadingError/LoadingError";
+import { useContext } from "react";
+import { CartContext } from "../../context/Context";
+import SideDrawer from "../SideDrawer/SideDrawer";
 
 export default function Products() {
+
+  const Cart = useContext(CartContext);
+  console.log(Cart);
+
   // get all the products using the useProducts hook
   const { data } = useProducts();
 
@@ -52,6 +58,10 @@ export default function Products() {
                     src={product.imageURLs[0]}
                     alt="products image"
                     border="1px solid lightgray"
+                    objectFit="cover"
+                    objectPosition="50% 50%"
+                    // width="100%"
+                    height="18rem"
                   />
                   <Box>
                     <Box
@@ -91,6 +101,7 @@ export default function Products() {
                       />
                     </Box>
                   </Box>
+                  <SideDrawer open={open} />
                 </Box>
               ))
             : null}
