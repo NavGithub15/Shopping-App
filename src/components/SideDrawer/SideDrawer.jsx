@@ -12,10 +12,16 @@ import {
   Heading,
   Text,
 } from "@chakra-ui/react";
-import { FaTrash } from "react-icons/fa";
+import { FaPlus, FaTrash } from "react-icons/fa";
+import { AiOutlineShoppingCart } from "react-icons/ai";
 import { useContext } from "react";
+import { CartContext } from "../../context/Context";
 
 export default function SideDrawer({ isOpen, onClose }) {
+  // Import cartItems from context displays array of cartItems and removeProduct function removes item from cartItems array
+  const { cartItems, removeProduct, addProduct, totalPrice } = useContext(CartContext);
+  console.log(totalPrice);
+
   return (
     <>
       <Drawer open={open} isOpen={isOpen} placement="right" onClose={onClose}>
@@ -32,42 +38,74 @@ export default function SideDrawer({ isOpen, onClose }) {
               My Orders
             </Heading>
             <DrawerBody padding="0" maxH="700px" overflow="auto">
-              <Card
-                fontWeight="300"
-                direction={{ base: "row", sm: "row" }}
-                mt="1rem"
-                overflow="hidden"
-                variant="outline"
-                height="150px"
-              >
-                <Image
-                  objectFit="cover"
-                  maxW={{ base: "100px", sm: "100px" }}
-                  src="https://images.unsplash.com/photo-1667489022797-ab608913feeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw5fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60"
-                  alt="Caffe Latte"
-                />
+              {cartItems && cartItems.length ? (
+                cartItems.map((item) => (
+                  <Card
+                    fontWeight="300"
+                    direction={{ base: "row", sm: "row" }}
+                    mt="1rem"
+                    overflow="hidden"
+                    variant="outline"
+                    height="150px"
+                    key={item._id}
+                  >
+                    <Image
+                      objectFit="cover"
+                      backgroundRepeat="no-repeat"
+                      objectPosition="50% 50%"
+                      maxW={{ base: "100px", sm: "100px" }}
+                      src={item.imageURLs[0]}
+                      alt="image"
+                      ml=".5rem"
+                    />
 
-                <Stack fontFamily="eb garamond" fontWeight="300">
-                  <Flex justify="space-between" align="center">
-                    <Heading
-                      size="md"
-                      fontFamily="eb garamond"
-                      margin=" 2rem .5rem"
-                    >
-                      The perfect latte
-                    </Heading>
-                    <FaTrash />
-                  </Flex>
-                  <Flex justify="space-between" align="" margin="0 1rem">
-                    <Text py="2" margin="0 .5rem">
-                      $10
-                    </Text>
-                    <Text py="2" margin="0 .5rem">
-                      1x
-                    </Text>
-                  </Flex>
-                </Stack>
-              </Card>
+                    <Stack fontFamily="eb garamond">
+                      <Flex justify="space-between" align="center">
+                        <Text
+                          fontSize="1rem"
+                          fontFamily="eb garamond"
+                          fontWeight="600"
+                          margin=" 1rem .5rem"
+                        >
+                          {item.fulhausProductName}
+                        </Text>
+                      </Flex>
+                      <Flex justify="space-between" align="" margin="0 1rem">
+                        <Text py="2" margin="0 .5rem" fontWeight="600">
+                          ${item.rentalPrice}
+                        </Text>
+                        <Flex alignItems="center" mr=".5rem">
+                          <FaTrash
+                            cursor="pointer"
+                            onClick={() => {
+                              removeProduct(item);
+                            }}
+                          />
+                          <Text py="2" margin="0 .5rem" fontWeight="600">
+                            {`${item.quantity}x`}
+                          </Text>
+                          <FaPlus cursor="pointer" onClick={() => {addProduct(item)}}/>
+                        </Flex>
+                      </Flex>
+                    </Stack>
+                  </Card>
+                ))
+              ) : (
+                <Flex
+                  padding="1rem"
+                  flexDirection="column"
+                  alignItems="center"
+                  justifyContent="space-between"
+                  position="absolute"
+                  top="30%"
+                  left="15%"
+                >
+                  <AiOutlineShoppingCart fontSize="5rem" />
+                  <Heading as="h2" fontFamily="eb garamond" fontWeight="300">
+                    Cart is empty
+                  </Heading>
+                </Flex>
+              )}
             </DrawerBody>
             <DrawerFooter
               flexDirection="column"
@@ -82,7 +120,7 @@ export default function SideDrawer({ isOpen, onClose }) {
                 mb="1rem"
               >
                 <Text fontFamily="eb garamond">Total</Text>
-                <Text fontFamily="eb garamond">$10</Text>
+                <Text fontFamily="eb garamond">${totalPrice}</Text>
               </Flex>
               <Flex
                 align="center"

@@ -8,8 +8,9 @@ import { useContext } from "react";
 import { CartContext } from "../../context/Context";
 
 export default function Products() {
-  // imports the add and remove products function from context
-  const Cart = useContext(CartContext);
+  
+  // Imports addProduct function from context and adds product to empty array
+  const { addProduct } = useContext(CartContext);
 
   // get all the products using the useProducts hook
   // isLoading is used to determine if the products are loading or not
@@ -98,6 +99,9 @@ export default function Products() {
                         as={MdOutlineAddShoppingCart}
                         className="react-icons"
                         cursor="pointer"
+                        onClick={() => {
+                          addProduct(product);
+                        }}
                       />
                     </Box>
                   </Box>

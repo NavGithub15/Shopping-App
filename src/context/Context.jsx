@@ -1,11 +1,9 @@
 import { createContext, useState } from "react";
-import { useProducts } from "../utils/utils";
 
 export const CartContext = createContext();
 
 export const Context = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
-  const [items, setItems] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
 
   // This function will add the item to the cart and it checks if the item already exists in the array then it will update the quantity of the item in the cart
@@ -46,7 +44,7 @@ export const Context = ({ children }) => {
   };
 
   return (
-    <CartContext.Provider value={{ cartItems, setCartItems, totalPrice, items, setItems, setTotalPrice, addProduct, removeProduct }}>
+    <CartContext.Provider value={{ cartItems, setCartItems, totalPrice, setTotalPrice, addProduct, removeProduct }}>
       {children}
     </CartContext.Provider>
   );

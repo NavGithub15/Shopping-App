@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 
-const API_URL = "https://cors-anywhere.herouapp.com/https://fh-api-dev.herokuapp.com/api/products-service/products/website/CAD"
+const API_URL = "https://cors-anywhere.herokuapp.com/https://fh-api-dev.herokuapp.com/api/products-service/products/website/CAD"
 
 export const useProducts = () => {
   const { data, isLoading, error } = useQuery({
