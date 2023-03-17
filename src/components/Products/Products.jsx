@@ -1,17 +1,23 @@
 import "./Products.scss";
 import { useProducts } from "../../utils/utils";
-import { Container, Box, Flex, Icon, Image, Spinner } from "@chakra-ui/react";
+import {
+  Container,
+  Box,
+  Flex,
+  Icon,
+  Image,
+} from "@chakra-ui/react";
 import { StarIcon } from "@chakra-ui/icons";
 import { MdOutlineAddShoppingCart } from "react-icons/md";
 import LoadingError from "../LoadingError/LoadingError";
 import { useContext } from "react";
 import { CartContext } from "../../context/Context";
-import SideDrawer from "../SideDrawer/SideDrawer";
 
 export default function Products() {
 
+
+  // imports the add and remove products function from context
   const Cart = useContext(CartContext);
-  console.log(Cart);
 
   // get all the products using the useProducts hook
   const { data } = useProducts();
@@ -101,7 +107,6 @@ export default function Products() {
                       />
                     </Box>
                   </Box>
-                  <SideDrawer open={open} />
                 </Box>
               ))
             : null}
