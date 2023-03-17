@@ -1,18 +1,25 @@
 import "./Products.scss";
 import { useProducts } from "../../utils/utils";
-import { Container, Box, Flex, Icon, Image, Spinner } from "@chakra-ui/react";
+import { Container, Box, Flex, Icon, Image } from "@chakra-ui/react";
 import { StarIcon } from "@chakra-ui/icons";
 import { MdOutlineAddShoppingCart } from "react-icons/md";
-import Broken from "../../assets/images/broken.png";
 import LoadingError from "../LoadingError/LoadingError";
+import { useContext } from "react";
+import { CartContext } from "../../context/Context";
 
 export default function Products() {
-  // get all the products using the useProducts hook
-  const { data } = useProducts();
+  
+  // Imports addProduct function from context and adds product to empty array
+  const { addProduct } = useContext(CartContext);
 
-  // If the products loading or gets an error, show a message
-  if (!data) {
-    return <LoadingError />;
+  // get all the products using the useProducts hook
+  // isLoading is used to determine if the products are loading or not
+  // error is used to determine if there is an error or not
+  const { isLoading, error, products } = useProducts();
+
+  //  If the products from api is true render component else render LoadingError component
+  if (isLoading || !products || error) {
+    return <LoadingError isLoading={isLoading} error={error} />;
   }
 
   return (
@@ -37,8 +44,8 @@ export default function Products() {
             },
           }}
         >
-          {data
-            ? data.data.products.map((product) => (
+          {products
+            ? products.map((product) => (
                 <Box
                   maxW="280px"
                   margin="1rem auto"
@@ -52,6 +59,10 @@ export default function Products() {
                     src={product.imageURLs[0]}
                     alt="products image"
                     border="1px solid lightgray"
+                    objectFit="cover"
+                    objectPosition="50% 50%"
+                    // width="100%"
+                    height="18rem"
                   />
                   <Box>
                     <Box
@@ -88,6 +99,9 @@ export default function Products() {
                         as={MdOutlineAddShoppingCart}
                         className="react-icons"
                         cursor="pointer"
+                        onClick={() => {
+                          addProduct(product);
+                        }}
                       />
                     </Box>
                   </Box>

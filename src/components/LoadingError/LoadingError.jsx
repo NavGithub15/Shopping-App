@@ -2,8 +2,7 @@ import { useProducts } from "../../utils/utils";
 import { Box, Image, Spinner } from "@chakra-ui/react";
 import Broken from "../../assets/images/broken.png";
 
-export default function LoadingError() {
-  const { isLoading, error } = useProducts();
+export default function LoadingError({ isLoading, error }) {
 
   return (
     <>
@@ -24,9 +23,13 @@ export default function LoadingError() {
               </Box>
             </>
           ) : (
-            <Box
-            >
-              <Image src={Broken} alt="broken" boxSize="10rem" margin=" 2rem auto" />
+            <Box>
+              <Image
+                src={Broken}
+                alt="broken"
+                boxSize="10rem"
+                margin=" 2rem auto"
+              />
               <Box>{`Something went wrong: ${error.message}`}</Box>
             </Box>
           )}

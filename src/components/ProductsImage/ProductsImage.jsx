@@ -37,11 +37,7 @@ export default function ProductDetails() {
 
   return (
     <>
-      <Container
-        padding="0"
-        margin="0"
-        marginBottom="2rem"
-      >
+      <Container padding="0" margin="0" marginBottom="2rem">
         <Slider
           {...settings}
           sx={{
