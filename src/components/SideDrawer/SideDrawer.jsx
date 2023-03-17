@@ -43,6 +43,7 @@ export default function SideDrawer({ isOpen, onClose }) {
                 cartItems.map((item) => (
                   <Card
                     fontWeight="300"
+                    bgColor="#e7e6dd"
                     direction={{ base: "row", sm: "row" }}
                     mt="1rem"
                     overflow="hidden"
@@ -134,11 +135,12 @@ export default function SideDrawer({ isOpen, onClose }) {
                 fontSize="2rem"
                 width="100%"
               >
-                <Button bgColor="white" onClick={onClose}>
+                <Button bgColor="white" onClick={onClose} borderRadius="none">
                   Shop More
                 </Button>
                 <Button
                   bgColor="black"
+                  borderRadius="none"
                   color="white"
                   _hover={{ bgColor: "rgba(0,0,0,0.7)" }}
                 >
