@@ -31,7 +31,7 @@ The application must meet the following requirements:
 To get started with this project, follow these steps:
 
 - Clone this repository to your local machine.
-- `cd` into the project directory `fulhaus-shopping-app`
+- `cd` into the project directory `fulhaus-test-FE`
 - Clone this repository to your local machine
 `git@github.com:NavGithub15/fulhaus-test-FE.git`
 - Install the necessary dependencies using `npm install`.
