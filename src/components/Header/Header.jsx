@@ -1,22 +1,29 @@
+import "./Header.scss";
 import { Link } from "react-router-dom";
 import { Button, Flex } from "@chakra-ui/react";
 import { useDisclosure } from "@chakra-ui/react";
 import SideDrawer from "../SideDrawer/SideDrawer";
+import { BsCart } from "react-icons/bs";
+import { CartContext } from "../../context/Context";
+import { useContext } from "react";
 
 export default function Header() {
 
   // opens the bottom drawer using the useDisclosure hook from chakra-ui
   const { isOpen, onOpen, onClose } = useDisclosure();
 
+  const { totalQty } = useContext(CartContext)
+
   return (
     <Flex
       as="nav"
       align="center"
       wrap="wrap"
-      padding={6}
+      padding="1rem 2rem 1rem 2rem"
       bg="white"
       justifyContent="space-between"
       margin="0 auto"
+      border="1px solid gray"
     >
       <Flex align="center">
         <Link to="/">
@@ -34,10 +41,19 @@ export default function Header() {
         </Link>
       </Flex>
 
-      <Flex align="center" >
-        <Button onClick={onOpen}>Checkout</Button>
+      <Flex align="center">
+
+          <button onClick={onOpen} className="header-button">
+          <BsCart
+          className="react-icons react-icons-custom"
+          />
+          <span className="header-span">
+             {totalQty}
+          </span>
+        </button>
+          
       </Flex>
-      <SideDrawer isOpen={isOpen} onClose={onClose}/>
+      <SideDrawer isOpen={isOpen} onClose={onClose} />
     </Flex>
   );
 }

@@ -19,8 +19,9 @@ import { CartContext } from "../../context/Context";
 
 export default function SideDrawer({ isOpen, onClose }) {
   // Import cartItems from context displays array of cartItems and removeProduct function removes item from cartItems array
-  const { cartItems, removeProduct, addProduct, totalPrice } = useContext(CartContext);
-  console.log(totalPrice);
+  // totalPrice function calculates total price of cartItems
+  const { cartItems, removeProduct, addProduct, totalPrice } =
+    useContext(CartContext);
 
   return (
     <>
@@ -84,7 +85,12 @@ export default function SideDrawer({ isOpen, onClose }) {
                           <Text py="2" margin="0 .5rem" fontWeight="600">
                             {`${item.quantity}x`}
                           </Text>
-                          <FaPlus cursor="pointer" onClick={() => {addProduct(item)}}/>
+                          <FaPlus
+                            cursor="pointer"
+                            onClick={() => {
+                              addProduct(item);
+                            }}
+                          />
                         </Flex>
                       </Flex>
                     </Stack>
@@ -129,7 +135,7 @@ export default function SideDrawer({ isOpen, onClose }) {
                 width="100%"
               >
                 <Button bgColor="white" onClick={onClose}>
-                  Cancel
+                  Shop More
                 </Button>
                 <Button
                   bgColor="black"

@@ -27,7 +27,7 @@ export default function ProductDetails() {
     nextArrow: null,
     responsive: [
       {
-        breakpoint: "768px",
+        breakpoint: "992px",
         settings: {
           width: "100vw",
         },
@@ -62,7 +62,7 @@ export default function ProductDetails() {
                 height={{ base: "100vh", lg: "80vh" }}
                 backgroundSize="cover"
                 maxHeight={{ base: "100vh", lg: "100%" }}
-                width={{ base: "100%" }}
+                width={{ base: "100%", md: "100vh" }}
                 maxWidth={{ base: "100%", lg: "100%" }}
                 // Add media queries to adjust the image size on smaller screens
                 sx={{

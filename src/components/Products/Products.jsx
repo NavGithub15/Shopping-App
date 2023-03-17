@@ -8,7 +8,6 @@ import { useContext } from "react";
 import { CartContext } from "../../context/Context";
 
 export default function Products() {
-  
   // Imports addProduct function from context and adds product to empty array
   const { addProduct } = useContext(CartContext);
 
@@ -94,7 +93,7 @@ export default function Products() {
                       fontWeight="semibold"
                       color="gray.600"
                     >
-                      ${product.rentalPrice}
+                      ${product.retailPrice}
                       <Icon
                         as={MdOutlineAddShoppingCart}
                         className="react-icons"

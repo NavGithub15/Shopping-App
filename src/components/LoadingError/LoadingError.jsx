@@ -3,7 +3,6 @@ import { Box, Image, Spinner } from "@chakra-ui/react";
 import Broken from "../../assets/images/broken.png";
 
 export default function LoadingError({ isLoading, error }) {
-
   return (
     <>
       {isLoading || error ? (
