@@ -37,6 +37,11 @@ To get started with this project, follow these steps:
 - Install the necessary dependencies using `npm install`.
 - Start the development server using `npm run dev`.
 
+## Cors Error and Proxy URL
+### If you encounter a CORS error when using the API endpoint use proxy server
+- `const PROXY_URL = "https://cors-anywhere.herokuapp.com/https://fh-api-dev.herokuapp.com/api/products-service/products/website/CAD";`
+
+
 ## Future Improvements
 
 There are several areas where this application can be improved in the future, such as:
