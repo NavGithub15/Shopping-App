@@ -1,12 +1,6 @@
 import "./Products.scss";
 import { useProducts } from "../../utils/utils";
-import {
-  Container,
-  Box,
-  Flex,
-  Icon,
-  Image,
-} from "@chakra-ui/react";
+import { Container, Box, Flex, Icon, Image } from "@chakra-ui/react";
 import { StarIcon } from "@chakra-ui/icons";
 import { MdOutlineAddShoppingCart } from "react-icons/md";
 import LoadingError from "../LoadingError/LoadingError";
@@ -14,17 +8,17 @@ import { useContext } from "react";
 import { CartContext } from "../../context/Context";
 
 export default function Products() {
-
-
   // imports the add and remove products function from context
   const Cart = useContext(CartContext);
 
   // get all the products using the useProducts hook
-  const { data } = useProducts();
+  // isLoading is used to determine if the products are loading or not
+  // error is used to determine if there is an error or not
+  const { isLoading, error, products } = useProducts();
 
-  // If the products loading or gets an error, show a message
-  if (!data) {
-    return <LoadingError />;
+  //  If the products from api is true render component else render LoadingError component
+  if (isLoading || !products || error) {
+    return <LoadingError isLoading={isLoading} error={error} />;
   }
 
   return (
@@ -49,8 +43,8 @@ export default function Products() {
             },
           }}
         >
-          {data
-            ? data.data.products.map((product) => (
+          {products
+            ? products.map((product) => (
                 <Box
                   maxW="280px"
                   margin="1rem auto"
