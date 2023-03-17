@@ -32,6 +32,8 @@ To get started with this project, follow these steps:
 
 - Clone this repository to your local machine.
 - `cd` into the project directory `fulhaus-shopping-app`
+- Clone this repository to your local machine
+`git@github.com:NavGithub15/fulhaus-test-FE.git`
 - Install the necessary dependencies using `npm install`.
 - Start the development server using `npm run dev`.
 

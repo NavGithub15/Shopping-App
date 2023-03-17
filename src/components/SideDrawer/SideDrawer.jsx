@@ -136,7 +136,7 @@ export default function SideDrawer({ isOpen, onClose }) {
                 width="100%"
               >
                 <Button bgColor="white" onClick={onClose} borderRadius="none">
-                  Shop More
+                  Cancel
                 </Button>
                 <Button
                   bgColor="black"
