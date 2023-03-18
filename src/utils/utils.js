@@ -1,25 +1,20 @@
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 
-const PROXY_URL = "https://cors-anywhere.herokuapp.com/https://fh-api-dev.herokuapp.com/api/products-service/products/website/CAD";
-const API_URL = "https://fh-api-dev.herokuapp.com/api/products-service/products/website/CAD";
+// create a proxy server in vite.config.js 
+const API_URL = "/api/products-service/products/website/CAD";
+const url = API_URL + "/?page=0&limit=100"; 
 
 export const useProducts = () => {
   const { data, isLoading, error } = useQuery({
     queryKey: ["products"],
     queryFn: async () => {
       try {
-        const response = await axios.get(`${API_URL}?page=0&limit=15`);
+        const response = await axios.get(url);
         return response.data;
       } catch (error) {
-        console.error(`API error: ${error}`);
-        try {
-          const response = await axios.get(`${PROXY_URL}?page=0&limit=15`);
-          return response.data;
-        } catch (error) {
-          console.error(`Proxy error: ${error}`);
-          return { error: "Failed to fetch data" };
-        }
+        console.log(`Server error: ${error}`);
+        return {error: error};
       }
     },
     retry: 2,

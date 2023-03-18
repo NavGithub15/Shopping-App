@@ -5,7 +5,7 @@ This project is a front-end technical assessment for Fulhaus. The objective of t
 
 ## Requirements
 
-The application must meet the following requirements:
+The assessment requirements:
 
 - Create a layout and a cart drawer based on the design provided
 - Display the product catalog using the API endpoint provided.
@@ -36,10 +36,11 @@ To get started with this project, follow these steps:
 `git@github.com:NavGithub15/fulhaus-test-FE.git`
 - Install the necessary dependencies using `npm install`.
 - Start the development server using `npm run dev`.
-
-## Cors Error and Proxy URL
-### If you encounter a CORS error when using the API endpoint use proxy server
-- `const PROXY_URL = "https://cors-anywhere.herokuapp.com/https://fh-api-dev.herokuapp.com/api/products-service/products/website/CAD";`
+### In case CORS error occurs when using the API endpoint 
+#### This CORS Anywhere only be used for development purposes to test the requests
+- `const PROXY_URL = "https://cors-anywhere.herokuapp.com/";`
+- `const API_URL = "https://fh-api-dev.herokuapp.com/api/products-service/products/website/CAD";`
+- `const url = PROXY_URL + API_URL;`
 
 
 ## Future Improvements
@@ -58,6 +59,14 @@ There are several areas where this application can be improved in the future, su
 - Add a search bar to allow the user to search for specific products by name or description.
 - Implement auto-suggestion functionality to display relevant products as the user types.
 - Highlight the search term in the product name and description to provide context to the user.
+
+### Unit Testing:
+- Implement unit tests for each component to ensure that they are rendering correctly and functioning as expected.
+- Use a testing library such as Jest or React Testing Library to write and run tests.
+
+### Error Handling:
+- Configure the cors error and better error handling
+- Use a global error boundary to catch and handle errors across the entire application.
 
 
 ## Conclusion

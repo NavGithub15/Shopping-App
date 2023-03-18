@@ -23,7 +23,7 @@ export default function Header() {
       bg="white"
       justifyContent="space-between"
       margin="0 auto"
-      border="1px solid gray"
+      border="1px solid black"
     >
       <Flex align="center">
         <Link to="/">

@@ -2,12 +2,16 @@
 
 .header-button {
     position: relative;
-    background-color: aliceblue;
+    background-color: white;
     height: 3.52rem;
     width: 3.52rem;
     border-radius: 50%;
     font-weight: 700;
     text-align: center;
+
+    &:hover {
+        color: #EB5406;
+    }
 
 }
 
@@ -17,6 +21,11 @@
     position: absolute;
     top: 0.5rem;
     right: -0.5rem;
+
+    &:hover {
+        cursor: pointer;
+        color: black !important;
+    }
 }
 
 // .header-span {
