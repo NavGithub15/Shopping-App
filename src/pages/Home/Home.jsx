@@ -17,7 +17,7 @@ export default function Home() {
                 transition: { duration: 0.6, ease: "easeInOut" },
               }}
             >
-              Elevate your property
+              Transform Your Space
             </motion.span>
             <motion.span
               className="hero__text-right"
@@ -28,7 +28,7 @@ export default function Home() {
                 transition: { duration: 0.6, delay: 0.2, ease: "easeInOut" },
               }}
             >
-              with thoughtful design
+              Discover Your Style
             </motion.span>
           </h1>
           <Link className="hero__cta" to="/shopNow">

@@ -28,7 +28,7 @@ export default function Products() {
         margin="0"
         width="100%"
         maxW="100%"
-        maxH="710px"
+        maxH="820px"
         overflow="auto"
       >
         <Flex

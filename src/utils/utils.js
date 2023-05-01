@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 
 // create a proxy server in vite.config.js 
 const API_URL = "/api/products-service/products/website/CAD";
-const url = API_URL + "/?page=0&limit=100"; 
+const url = API_URL + "/?page=0&limit=20"; 
 
 export const useProducts = () => {
   const { data, isLoading, error } = useQuery({
