@@ -1,6 +1,7 @@
 import "./Products.scss";
+import { useState } from "react";
 import { useProducts } from "../../utils/utils";
-import { Container, Box, Flex, Icon, Image } from "@chakra-ui/react";
+import { Container, Box, Flex, Icon, Image, Button } from "@chakra-ui/react";
 import { StarIcon } from "@chakra-ui/icons";
 import { MdOutlineAddShoppingCart } from "react-icons/md";
 import LoadingError from "../LoadingError/LoadingError";
@@ -8,13 +9,15 @@ import { useContext } from "react";
 import { CartContext } from "../../context/Context";
 
 export default function Products() {
+  const [page, setPage] = useState(1);
   // Imports addProduct function from context and adds product to empty array
   const { addProduct } = useContext(CartContext);
+  const limit = 20;
 
   // get all the products using the useProducts hook
   // isLoading is used to determine if the products are loading or not
   // error is used to determine if there is an error or not
-  const { isLoading, error, products } = useProducts();
+  const { isLoading, error, products, totalPages } = useProducts(page, limit);
 
   //  If the products from api is true render component else render LoadingError component
   if (isLoading || !products || error) {
@@ -56,6 +59,7 @@ export default function Products() {
                 >
                   <Image
                     src={product.imageURLs[0]}
+                    loading="lazy"
                     alt="products image"
                     border="1px solid lightgray"
                     objectFit="cover"
@@ -108,6 +112,19 @@ export default function Products() {
               ))
             : null}
         </Flex>
+        <Box mt={4} textAlign="center">
+          {page > 1 && (
+            <Button
+              onClick={() => setPage(page - 1)}
+              style={{ marginRight: "10px" }}
+            >
+              Previous
+            </Button>
+          )}
+          {page < totalPages && (
+            <Button onClick={() => setPage(page + 1)}>Next</Button>
+          )}
+        </Box>
       </Container>
     </>
   );

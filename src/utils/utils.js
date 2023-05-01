@@ -1,29 +1,32 @@
-import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 
-// create a proxy server in vite.config.js 
-const API_URL = "/api/products-service/products/website/CAD";
-const url = API_URL + "/?page=0&limit=20"; 
+// create a proxy server in vite.config.js
+const JSON_URL = "/data/fulhausdata.json";
 
-export const useProducts = () => {
+export const useProducts = (page, limit) => {
   const { data, isLoading, error } = useQuery({
-    queryKey: ["products"],
+    queryKey: ["products", page, limit],
     queryFn: async () => {
       try {
-        const response = await axios.get(url);
-        return response.data;
+        const response = await fetch(JSON_URL);
+        const jsonData = await response.json();
+        return jsonData;
       } catch (error) {
-        console.log(`Server error: ${error}`);
-        return {error: error};
+        console.log(`Error fetching JSON data: ${error}`);
+        return { error: error };
       }
     },
     retry: 2,
     retryOnMount: true,
   });
 
+  const start = (page - 1) * limit;
+  const end = start + limit;
+
   return {
     isLoading,
     error: error || (data && data.error),
-    products: data?.data?.products || [],
+    products: data?.data?.products.slice(start, end) || [],
+    totalPages: Math.ceil((data?.data?.products.length || 0) / limit),
   };
 };
