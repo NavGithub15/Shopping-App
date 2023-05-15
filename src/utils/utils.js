@@ -1,27 +1,22 @@
-import { useQuery } from "@tanstack/react-query";
-
-// create a proxy server in vite.config.js
-const JSON_URL = "../data/fulhausdata.json";
+import { productsData } from "../data/data";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 
 export const useProducts = (page, limit) => {
+  const queryClient = useQueryClient();
+
   const { data, isLoading, error } = useQuery({
     queryKey: ["products", page, limit],
-    queryFn: async () => {
-      try {
-        const response = await fetch(JSON_URL);
-        if (!response.ok) {
-          console.log(`HTTP error! status: ${response.status}`);
-        } else {
-          const jsonData = await response.json();
-          return jsonData;
-        }
-      } catch (error) {
-        console.log(`Error fetching JSON data: ${error}`);
-        return { error: error };
-      }
+    queryFn: () => {
+      return productsData;
     },
     retry: 2,
     retryOnMount: true,
+    onMount: () => {
+      // Prefetch the next page
+      queryClient.prefetchQuery(["products", page + 1, limit], () => {
+        return productsData;
+      });
+    },
   });
 
   const start = (page - 1) * limit;

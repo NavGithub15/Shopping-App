@@ -37,7 +37,7 @@ export default function ProductDetails() {
 
   return (
     <>
-      <Container padding="0" margin="0" marginBottom="2rem">
+      <Container padding="0" margin="0" marginBottom="2rem" width="full">
         <Slider
           {...settings}
           sx={{
@@ -62,7 +62,7 @@ export default function ProductDetails() {
                 height={{ base: "100vh", lg: "80vh" }}
                 backgroundSize="cover"
                 maxHeight={{ base: "100vh", lg: "100%" }}
-                width={{ base: "100%", md: "100vh" }}
+                width={{ base: "100vw", md: "100vw" }}
                 maxWidth={{ base: "100%", lg: "100%" }}
                 // Add media queries to adjust the image size on smaller screens
                 sx={{

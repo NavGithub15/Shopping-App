@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import ProductsImage from "../../components/ProductsImage/ProductsImage"
 import "./Home.scss";
 
 export default function Home() {
@@ -49,6 +50,7 @@ export default function Home() {
           </Link>
         </div>
       </div>
+      <ProductsImage />
     </div>
   );
 }
