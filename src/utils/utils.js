@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 
 // create a proxy server in vite.config.js
-const JSON_URL = "/data/fulhausdata.json";
+const JSON_URL = "../data/fulhausdata.json";
 
 export const useProducts = (page, limit) => {
   const { data, isLoading, error } = useQuery({
