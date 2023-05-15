@@ -9,8 +9,12 @@ export const useProducts = (page, limit) => {
     queryFn: async () => {
       try {
         const response = await fetch(JSON_URL);
-        const jsonData = await response.json();
-        return jsonData;
+        if (!response.ok) {
+          console.log(`HTTP error! status: ${response.status}`);
+        } else {
+          const jsonData = await response.json();
+          return jsonData;
+        }
       } catch (error) {
         console.log(`Error fetching JSON data: ${error}`);
         return { error: error };
