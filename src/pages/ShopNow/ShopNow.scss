@@ -7,9 +7,5 @@
         width: 100vw;
         display: flex;
         flex-direction: column;
-    
-        @include laptop {
-            flex-direction: row;
-        }
     }
 }

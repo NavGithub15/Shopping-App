@@ -1,7 +1,7 @@
 import "./Products.scss";
 import { useState } from "react";
 import { useProducts } from "../../utils/utils";
-import { Container, Box, Flex, Icon, Image, Button } from "@chakra-ui/react";
+import { Container, Box, Grid, Icon, Image, Button } from "@chakra-ui/react";
 import { StarIcon } from "@chakra-ui/icons";
 import { MdOutlineAddShoppingCart } from "react-icons/md";
 import LoadingError from "../LoadingError/LoadingError";
@@ -27,28 +27,35 @@ export default function Products() {
   return (
     <>
       <Container
+        borderBottom="none"
+        borderTop="1px solid black"
+        borderRight="1px solid black"
+        borderLeft="1px solid black"
+        bg="#FEF5EC"
         padding="0"
         margin="0"
         width="100%"
         maxW="100%"
-        maxH="820px"
-        overflow="auto"
+        // maxH="820px"
+        // overflow="auto"
       >
-        <Flex
-          flexWrap="wrap"
-          p={{ base: "1rem" }}
-          sx={{
-            "@media screen and (min-width: 62rem)": {
-              border: "1px solid lightgray",
-            },
-            "@media screen and (min-width: 20rem)": {
-              borderTop: "1px solid lightgray",
-            },
+        <Box as="h1" mt="1rem" fontSize="2rem" textAlign="center">
+          Products
+        </Box>
+        <Grid
+          templateColumns={{
+            base: "repeat(1, 1fr)",
+            md: "repeat(2, 1fr)",
+            lg: "repeat(3, 1fr)",
+            xl: "repeat(4, 1fr)",
           }}
+          gap={6}
+          p={{ base: "1rem" }}
         >
           {products
             ? products.map((product) => (
                 <Box
+                  bg="white"
                   maxW="280px"
                   margin="1rem auto"
                   borderWidth="1px"
@@ -111,8 +118,8 @@ export default function Products() {
                 </Box>
               ))
             : null}
-        </Flex>
-        <Box mt={4} textAlign="center">
+        </Grid>
+        <Box mt={4} textAlign="center" marginBottom="1rem">
           {page > 1 && (
             <Button
               onClick={() => setPage(page - 1)}

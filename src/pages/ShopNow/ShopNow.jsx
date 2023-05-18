@@ -7,7 +7,7 @@ export default function ShopNow() {
     <>
       <main className="shopNow">
         <div className="shopNow__container">
-          {/* <ProductsImage /> */}
+        <ProductsImage />
           <Products />
         </div>
       </main>

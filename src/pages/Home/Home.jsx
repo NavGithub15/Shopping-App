@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import ProductsImage from "../../components/ProductsImage/ProductsImage"
+// import ProductsImage from "../../components/ProductsImage/ProductsImage"
 import "./Home.scss";
 
 export default function Home() {
@@ -15,7 +15,7 @@ export default function Home() {
               animate={{
                 y: 0,
                 opacity: 1,
-                transition: { duration: 0.6, ease: "easeInOut" },
+                transition: { duration: 0.7, delay: 0.3, ease: "easeInOut" },
               }}
             >
               Transform Your Space
@@ -26,7 +26,7 @@ export default function Home() {
               animate={{
                 y: 0,
                 opacity: 1,
-                transition: { duration: 0.6, delay: 0.2, ease: "easeInOut" },
+                transition: { duration: 0.9, delay: 0.4, ease: "easeInOut" },
               }}
             >
               Discover Your Style
@@ -50,7 +50,7 @@ export default function Home() {
           </Link>
         </div>
       </div>
-      <ProductsImage />
+      {/* <ProductsImage /> */}
     </div>
   );
 }

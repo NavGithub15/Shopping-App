@@ -2,7 +2,7 @@
 
 .header-button {
     position: relative;
-    background-color: white;
+    background-color: #FEF5EC;
     height: 3.52rem;
     width: 3.52rem;
     border-radius: 50%;
@@ -26,6 +26,10 @@
         cursor: pointer;
         color: black !important;
     }
+}
+
+.header-logo {
+mix-blend-mode: darken;
 }
 
 // .header-span {
